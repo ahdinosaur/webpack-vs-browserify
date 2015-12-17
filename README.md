@@ -48,3 +48,6 @@ ERROR in Entry module not found: Error: Cannot resolve 'file' or 'directory'
 
 - If your `webpack-dev-server shows you content of folder instead of rendered `index.html` — you might need to make sure that you stated proper `contentBase` in `server.js` (hell yes, you have to be explicit!)
 
+
+- One more thing that i discovered is that the `style-loader` and `css-loader` have to be placed in the root of project. If you install them into `webpack-example` webpack somehow fails to find them and throws error. I couldn't get to the bottom of this and do appreciate help.
+

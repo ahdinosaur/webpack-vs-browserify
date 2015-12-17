@@ -28,19 +28,22 @@ module.exports = cfg = {
   },
 
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['', '.js', '.css']
   },
 
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      exclude: /node_modules/,
-      include: path.join(__dirname, '..', 'src')
-    },
-    {
-      test: /\.css$/,
-      loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-    }]
+    loaders: [
+      {
+        test: /\.js$/,
+        loaders: ['babel'],
+        exclude: /node_modules/,
+        include: path.join(__dirname, '..', 'src')
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', //eslint-disable-line
+        include: path.join(__dirname, '..', 'src')
+      }
+    ]
   }
 };
