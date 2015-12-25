@@ -1,17 +1,26 @@
 {
   "name": "example-browserify",
   "version": "1.0.0",
+  "main": "../src"
   "description": "Browserify example for comparison.",
   "author": "Sergey Slipchenko",
   "license": "MIT",
   "scripts": {
-    "start": "budo ../src --serve bundle.js --dir ../public -- --debug -t babelify -t [ cssify --modules ] -p browserify-hmr"
+    "start": "budo . --serve bundle.js --dir ../public -- --debug -p browserify-hmr",
+    "build": "browserify . -o bundle.js -g uglifyify"
   },
+  "browserify": {
+    "transform": [
+      "babelify",
+      ["cssify", { "modules": true }]
+    ]
+  }
   "devDependencies": {
     "babelify": "^6.4.0",
     "browserify": "^12.0.1",
     "browserify-hmr": "^0.3.1",
     "budo": "^7.0.2",
-    "cssify": "^1.0.1"
+    "cssify": "^1.0.1",
+    "uglifyify": "^3.0.1"
   }
 }
